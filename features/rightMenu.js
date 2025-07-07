@@ -47,13 +47,21 @@ export class RightMenu {
                     }
                 }
 
-                // 우선순위에 따라 메뉴명 추출
-                const found = this.priority.find(item => menuText.includes(item));
-                if (found) {
+                // 우선순위에 따라 메뉴명 추출 (가장 높은 우선순위 선택)
+                let selectedMenu = null;
+                for (const priorityItem of this.priority) {
+                    if (menuText.includes(priorityItem)) {
+                        selectedMenu = priorityItem;
+                        break; // 가장 높은 우선순위의 첫 번째 매칭 항목 선택
+                    }
+                }
+
+                if (selectedMenu) {
                     // 4번째 칸(td)에 메뉴명 입력 (이미 값이 있으면 건너뜀)
                     const td = row.querySelector('td:nth-of-type(4)');
                     if (td && td.textContent.trim() === '') {
-                        td.textContent = found;
+                        td.textContent = selectedMenu;
+                        console.log(`✅ 메뉴 설정: ${selectedMenu} (원본: ${menuText})`);
                     }
                 }
             }

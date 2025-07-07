@@ -4,9 +4,9 @@ export class HandsosWaiting {
     constructor() {
         this.waitingNames = [
             "재희W", "광숙W", "지후W", 
-            "시은W", "윤진W", "정현W",
+            "윤진W", "정현W", "소연W",
             "희선W", "희진W", "소이W", 
-            "소연W", "재열W"
+            "재열W", "예나W"
         ];
 
         this.observer = new FrameObserver({
